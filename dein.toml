@@ -1,0 +1,117 @@
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = 'let g:deoplete#enable_at_startup = 1'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+hook_add = '''
+    command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
+      \   fzf#vim#with_preview({'options': '--exact --reverse'}, 'right:50%:wrap'))
+'''
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans=1
+    set background=light
+    colorscheme solarized
+'''
+
+[[plugins]]
+repo = 'fuenor/qfixhowm'
+hook_add = '''
+   let QFixHowm_Key = 'g'
+   let QFixHowm_SwitchListActionLock = ['{ }', '{-}', '{+}', '{x}']
+   let howm_dir             = '~/Dropbox/howm'
+   let howm_filename        = '%Y/%m/%Y-%m-%d-000000.md'
+   let howm_fileencoding    = 'utf-8'
+   let howm_fileformat      = 'unix'
+   let MyGrep_ShellEncoding = 'utf-8'
+   let QFixHowm_FileType = 'markdown'
+   let g:vim_markdown_folding_disabled=1
+   let QFixHowm_Title = '#'
+
+   let mygrepprg='rg'
+   let MyGrepcmd_useropt='-nH --no-heading --color never'
+   let MyGrepcmd_regexp=''
+   let MyGrepcmd_regexp_ignore='-i'
+   let MyGrepcmd_fix='-F'
+   let MyGrepcmd_fix_ignore='-F -i'
+   let MyGrepcmd_recursive=''
+   let MyGrep_GrepFilePattern='.'
+   
+   let g:QFixHowm_FoldingChapterTitle = 1
+   let g:QFixHowm_FoldingPattern = '^=[^=]'
+   let g:QFixHowm_DefaultSearchWord=0
+   
+   let calendar_action = "QFixHowmCalendarDiary"
+   let calendar_sign   = "QFixHowmCalendarSign"
+
+   nnoremap g,d :Calendar<CR>
+   nnoremap <C-h> 0f}:<C-U>call QFixMemoUserModeCR()<CR>
+   inoremap <C-]> { } 
+   inoremap <C-c> [<C-R>=strftime("%Y-%m-%d")<CR>]
+   inoremap <C-@> [<C-R>=strftime("%H:%M")<CR>]
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+   nnoremap <Leader>e :TagbarToggle<CR>
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = ['python']
+hook_add = '''
+let g:deoplete#sources#jedi#python_path = $HOME . "/.anyenv/envs/pyenv/shims/python"
+let g:deoplete#sources#jedi#show_docstring = 1
+'''
+# let g:deoplete#sources#jedi#extra_path
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = ['python']
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+on_ft = ['javascript']
+hook_add = '''
+   let g:deoplete#sources#ternjs#tern_bin = "Users/mm/.anyenv/envs/ndenv/shims/tern"
+   let g:deoplete#sources#ternjs#docs = 1
+'''
+
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+hook_add = '''
+   let g:jsx_ext_required = 0
+'''
+
+[[plugins]]
+repo = 'MaxMEllon/vim-jsx-pretty'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'moll/vim-node'
+on_ft = ['javascript']
