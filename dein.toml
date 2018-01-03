@@ -93,7 +93,7 @@ repo = 'thinca/vim-quickrun'
 repo = 'carlitux/deoplete-ternjs'
 on_ft = ['javascript']
 hook_add = '''
-   let g:deoplete#sources#ternjs#tern_bin = "Users/mm/.anyenv/envs/ndenv/shims/tern"
+   let g:deoplete#sources#ternjs#tern_bin = $HOME . "/.anyenv/envs/ndenv/shims/tern"
    let g:deoplete#sources#ternjs#docs = 1
 '''
 
@@ -115,3 +115,16 @@ on_ft = ['javascript']
 [[plugins]]
 repo = 'moll/vim-node'
 on_ft = ['javascript']
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_ft = ['go']
+depends = ['deoplete.nvim']
+hook_source = '''
+    let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
+'''
