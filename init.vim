@@ -1,6 +1,7 @@
 set noswapfile
 
 filetype indent on
+filetype plugin on
 set tabstop=2
 set shiftwidth=2
 set expandtab
