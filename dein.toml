@@ -15,6 +15,13 @@ hook_add = '''
       \ call fzf#vim#grep(
       \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
       \   fzf#vim#with_preview({'options': '--exact --reverse'}, 'right:50%:wrap'))
+
+    nnoremap [Fzf] <Nop>
+    nmap <Leader>f [Fzf]
+    nnoremap [Fzf]f :<C-u>Files<CR>
+    nnoremap [Fzf]g :<C-u>GFiles<CR>
+    nnoremap [Fzf]G :<C-u>GFiles?<CR>
+    nnoremap [Fzf]b :<C-u>Buffers<CR>
 '''
 
 [[plugins]]
@@ -90,29 +97,6 @@ on_ft = ['python']
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
-repo = 'carlitux/deoplete-ternjs'
-on_ft = ['javascript']
-hook_add = '''
-   let g:deoplete#sources#ternjs#tern_bin = $HOME . "/.anyenv/envs/ndenv/shims/tern"
-   let g:deoplete#sources#ternjs#docs = 1
-'''
-
-[[plugins]]
-repo = 'othree/yajs.vim'
-on_ft = ['javascript']
-
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = ['javascript']
-hook_add = '''
-   let g:jsx_ext_required = 0
-'''
-
-[[plugins]]
-repo = 'MaxMEllon/vim-jsx-pretty'
-on_ft = ['javascript']
-
-[[plugins]]
 repo = 'moll/vim-node'
 on_ft = ['javascript']
 
@@ -133,13 +117,6 @@ hook_source = '''
 repo = 'zah/nim.vim'
 on_ft = ['nim']
 
-# [[plugins]]
-# repo = 'jsfaint/gen_tags.vim'
-# hook_source = '''
-# let g:gen_tags#ctags_auto_gen = 1
-# let g:gen_tags#gtags_auto_gen = 1
-# '''
-
 [[plugins]]
 repo = 'vim-scripts/gtags.vim'
 
@@ -154,3 +131,24 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'ozelentok/denite-gtags'
+
+[[plugins]]
+repo = 'sbdchd/neoformat'
+
+# [[plugins]]
+# repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+
+[[plugins]]
+repo = 'billyvg/tigris.nvim'
+on_ft = ['javascript', 'javascript.jsx']
+hook_post_update = '''
+  let g:dein#plugin.build = './install.sh'
+'''
+hook_add = '''
+  let g:tigris#enabled = 1
+  let g:tigris#on_the_fly_enabled = 1
+  let g:tigris#delay = 300
+'''
